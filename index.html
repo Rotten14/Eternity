@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eternity — сообщество в Discord</title>
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -39,7 +40,8 @@
     background:rgba(14,13,18,0.72);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  .logo{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:0.01em;}
+  .logo{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:0.01em;display:flex;align-items:center;gap:10px;}
+  .logo-img{width:26px;height:26px;object-fit:contain;}
   .logo .mark{color:var(--amber);}
   nav{display:flex;gap:clamp(14px,3vw,32px);font-size:14px;color:var(--muted);align-items:center;}
   nav a:hover{color:var(--text);}
@@ -143,11 +145,11 @@
 <div class="bg-glow"></div>
 
 <header>
-  <div class="logo"><span class="mark">∞</span> Eternity</div>
+  <div class="logo"><img src="logo.png" alt="" class="logo-img"> Eternity</div>
   <nav>
     <a href="#rooms">Каналы</a>
     <a href="#stats">Статистика</a>
-    <a href="https://discord.gg/78FHVfDQx" class="nav-cta">Войти в Discord</a>
+    <a href="https://discord.gg/78FHVfDQx" target="_blank" rel="noopener" class="nav-cta">Войти в Discord</a>
   </nav>
 </header>
 
@@ -156,14 +158,14 @@
   <h1>Место, которое<br>не <em>закрывается</em></h1>
   <p class="hero-sub">Eternity — открытое сообщество в Discord. Голосовые каналы, разговоры, общие интересы — без формальностей и без расписания.</p>
   <div class="hero-row">
-    <a href="https://discord.gg/78FHVfDQx" class="btn-primary">Присоединиться</a>
+    <a href="https://discord.gg/78FHVfDQx" target="_blank" rel="noopener" class="btn-primary">Присоединиться</a>
     <a href="#rooms" class="btn-ghost">Что внутри</a>
   </div>
   <div class="stat-strip">
     <div class="stat"><div class="stat-num">41</div><div class="stat-label">участников</div></div>
-    <div class="stat"><div class="stat-num"><span class="ph">—</span></div><div class="stat-label">онлайн сейчас</div></div>
+    <div class="stat"><div class="stat-num" id="live-online-1"><span class="ph">—</span></div><div class="stat-label">онлайн сейчас</div></div>
     <div class="stat"><div class="stat-num"><span class="ph">—</span></div><div class="stat-label">сообщений за неделю</div></div>
-    <div class="stat"><div class="stat-num"><span class="ph">—</span></div><div class="stat-label">активных каналов</div></div>
+    <div class="stat"><div class="stat-num" id="live-channels-1"><span class="ph">—</span></div><div class="stat-label">голосовых каналов</div></div>
   </div>
 </section>
 
@@ -201,29 +203,29 @@
   <div class="section-head" data-reveal>
     <div class="section-eyebrow">Статистика</div>
     <h2>Сервер в цифрах</h2>
-    <p>Живые метрики видны только администраторам сервера (Discord Server Insights) или через бота-аналитик. Пришли цифры — вставлю на их место.</p>
+    <p>Онлайн и голосовые каналы обновляются в реальном времени через Discord Widget API. Остальное — заполни вручную, когда будут цифры.</p>
   </div>
   <div class="stats-panel" data-reveal>
     <div class="metric"><div class="metric-value">41</div><div class="metric-label">всего участников</div></div>
-    <div class="metric"><div class="metric-value ph">—</div><div class="metric-label">онлайн сейчас</div></div>
+    <div class="metric"><div class="metric-value" id="live-online-2"><span class="ph">—</span></div><div class="metric-label">онлайн сейчас</div></div>
     <div class="metric"><div class="metric-value ph">—</div><div class="metric-label">рост за месяц</div></div>
     <div class="metric"><div class="metric-value ph">—</div><div class="metric-label">сообщений в день</div></div>
-    <div class="metric"><div class="metric-value ph">—</div><div class="metric-label">дата основания</div></div>
+    <div class="metric"><div class="metric-value">авг. 2024</div><div class="metric-label">дата основания</div></div>
     <div class="metric"><div class="metric-value ph">—</div><div class="metric-label">буст-уровень</div></div>
   </div>
-  <div class="stats-note">Показано число участников с публичной страницы приглашения. Остальное — плейсхолдеры до получения данных.</div>
+  <div class="stats-note" id="live-status">Подключаюсь к живым данным сервера…</div>
 </section>
 
 <section id="join-section">
   <div class="join-panel" data-reveal>
     <h2>Присоединяйся к Eternity</h2>
     <p>41 человек уже внутри. Заходи, знакомься, оставайся сколько хочешь.</p>
-    <a href="https://discord.gg/78FHVfDQx" class="btn-primary">discord.gg/78FHVfDQx</a>
+    <a href="https://discord.gg/78FHVfDQx" target="_blank" rel="noopener" class="btn-primary">discord.gg/78FHVfDQx</a>
   </div>
 </section>
 
 <footer>
-  <div class="flogo">∞ Eternity</div>
+  <div class="flogo" style="display:flex;align-items:center;gap:8px;"><img src="logo.png" alt="" class="logo-img"> Eternity</div>
   <div>Сообщество в Discord · 2026</div>
 </footer>
 
@@ -233,6 +235,33 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
   els.forEach(el=>io.observe(el));
+
+  const GUILD_ID = "1273729852016693299";
+  const liveStatus = document.getElementById('live-status');
+
+  async function updateLiveStats(){
+    try{
+      const res = await fetch(`https://discord.com/api/guilds/${GUILD_ID}/widget.json`);
+      if(!res.ok) throw new Error('widget недоступен');
+      const data = await res.json();
+      const online = data.presence_count ?? '—';
+      const voiceChannels = Array.isArray(data.channels) ? data.channels.length : '—';
+
+      ['live-online-1','live-online-2'].forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) el.textContent = online;
+      });
+      const chEl = document.getElementById('live-channels-1');
+      if(chEl) chEl.textContent = voiceChannels;
+
+      if(liveStatus) liveStatus.textContent = 'Онлайн и голосовые каналы — живые данные с сервера. Обновлено: ' + new Date().toLocaleTimeString('ru-RU');
+    }catch(err){
+      if(liveStatus) liveStatus.textContent = 'Не удалось получить живые данные (виджет сервера может быть выключен).';
+    }
+  }
+
+  updateLiveStats();
+  setInterval(updateLiveStats, 30000);
 </script>
 
 </body>
